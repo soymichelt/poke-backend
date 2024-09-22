@@ -13,6 +13,8 @@ import {
   HttpPokemonResponse,
   HttpPokemonTypeResponse,
 } from '@module/infrastructure/persistence/http/httpPokemon.response';
+import { ListPokemonException } from '@module/domain/exceptions/listPokemonException';
+import { GetPokemonException } from '@module/domain/exceptions/getPokemonException';
 
 @Injectable()
 export class HttpPokemonRepository implements PokemonRepository {
@@ -40,7 +42,7 @@ export class HttpPokemonRepository implements PokemonRepository {
 
       return result;
     } catch (error) {
-      throw error;
+      throw new ListPokemonException(error);
     }
   }
 
@@ -56,7 +58,7 @@ export class HttpPokemonRepository implements PokemonRepository {
 
       return result;
     } catch (error) {
-      throw error;
+      throw new GetPokemonException(error);
     }
   }
 
@@ -87,7 +89,7 @@ export class HttpPokemonRepository implements PokemonRepository {
         types,
       });
     } catch (error) {
-      throw error;
+      throw new GetPokemonException(error);
     }
   }
 

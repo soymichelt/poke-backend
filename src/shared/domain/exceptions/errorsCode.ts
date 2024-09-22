@@ -5,4 +5,6 @@ export const ERROR_CODES = {
   InvalidDateException: 'SHA-1004',
 
   PokemonNotFoundException: 'POK-1001',
+  ListPokemonException: 'POK-1002',
+  GetPokemonException: 'POK-1003',
 };
