@@ -27,6 +27,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
     HttpModule.register({ timeout: 5000, maxRedirects: 5 }),
     ConfigModule.forRoot({
       isGlobal: true,
+      ignoreEnvFile: true,
       envFilePath: '.env',
     }),
   ],
