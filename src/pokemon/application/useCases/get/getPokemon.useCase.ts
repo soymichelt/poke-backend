@@ -3,6 +3,7 @@ import { BaseUseCase } from '@shared/domain/useCases/base.useCase';
 import { GetPokemonRequest } from '@module/application/useCases/get/getPokemon.request';
 import { PokemonResponse } from '@module/application/responses/pokemon.response';
 import { PokemonRepository } from '@module/domain/repositories/pokemon.repository';
+import { PokemonNotFoundException } from '@module/domain/exceptions/pokemonNotFound.exception';
 
 @Injectable()
 export class GetPokemonUseCase extends BaseUseCase<
@@ -20,7 +21,7 @@ export class GetPokemonUseCase extends BaseUseCase<
 
     const pokemonSelected = await this.repository.get(id);
     if (!pokemonSelected) {
-      throw new Error('Not found');
+      throw new PokemonNotFoundException(id);
     }
 
     return pokemonSelected.toPrimitives();
