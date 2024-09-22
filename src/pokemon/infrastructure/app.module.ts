@@ -3,7 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TerminusModule } from '@nestjs/terminus';
 import { HttpWithRetryService } from '@shared/infrastructure/http/httpWithRetry.service';
 import { GetPokemonController } from '@module/infrastructure/controllers/get/getPokemon.controller';
-import { GetPokemonWithTypesController } from '@module/infrastructure/controllers/getWithTypes/getPokemonWithTYpes.controller';
+import { GetPokemonWithTypesController } from '@module/infrastructure/controllers/getWithTypes/getPokemonTypes.controller';
 import { ListPokemonController } from '@module/infrastructure/controllers/list/listPokemon.controller';
 import { GetPokemonUseCase } from '@module/application/useCases/get/getPokemon.useCase';
 import { GetPokemonWithTypesUseCase } from '@module/application/useCases/getWithTypes/getPokemonWithTypes.useCase';
