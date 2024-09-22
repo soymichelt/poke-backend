@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Backend desarrollado con [Nest](https://github.com/nestjs/nest), el cuál implementa la API de Pokemon para servir información.
+Backend desarrollado con el framework [Nest](https://github.com/nestjs/nest), el cuál implementa la API de Pokemon para servir información. Además, este proyecto implementa TypeScript junto con otras herramientas de desarrollo de software moderno.
 
 ## Inicialización del proyecto
 
