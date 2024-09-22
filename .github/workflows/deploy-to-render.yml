@@ -1,0 +1,41 @@
+name: Deploy backend to render.com
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Instalación de dependencias
+        run: npm install
+
+      - name: Instalación de NestJS
+        run: npm install -g @nestjs/cli
+
+      - name: Ejecución del ESLint
+        run: npm run lint
+
+      - name: Ejecución de los tests
+        run: npm run test
+
+      - name: Compilación del proyecto
+        run: npm run build
+
+      - name: Deploy backend a render.com
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        run: |
+          curl -X POST -H "Authorization: Bearer $RENDER_API_KEY" \
+          https://api.render.com/deploy/srv-cro0gia3esus73btea90?key=3Upy-zSfSrE # URL de tu servicio en Render
