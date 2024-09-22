@@ -1,6 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TerminusModule } from '@nestjs/terminus';
+import { HttpModule } from '@nestjs/axios';
+import { ThrottlerModule } from '@nestjs/throttler';
+import { SentryModule } from '@sentry/nestjs/setup';
 import { HttpWithRetryService } from '@shared/infrastructure/http/httpWithRetry.service';
 import { GetPokemonController } from '@module/infrastructure/controllers/get/getPokemon.controller';
 import { GetPokemonWithTypesController } from '@module/infrastructure/controllers/getWithTypes/getPokemonTypes.controller';
@@ -11,12 +14,11 @@ import { ListPokemonUseCase } from '@module/application/useCases/list/listPokemo
 import { HttpPokemonRepository } from '@module/infrastructure/persistence/http/httpPokemon.repository';
 import { HealthCheckController } from '@module/infrastructure/controllers/healthCheck/healthCheck.controller';
 import { HttpPingIndicatorService } from '@module/infrastructure/services/pingIndicator/httpPingIndicatorService';
-import { HttpModule } from '@nestjs/axios';
 import { HealthCheckUseCase } from '@module/application/useCases/healthCheck/healthCheckUseCase';
-import { ThrottlerModule } from '@nestjs/throttler';
 
 @Module({
   imports: [
+    SentryModule.forRoot(),
     ThrottlerModule.forRoot([
       {
         ttl: 60000,

@@ -28,6 +28,8 @@
     "@nestjs/swagger": "^7.4.2",
     "@nestjs/terminus": "^10.2.3",
     "@nestjs/throttler": "^6.2.1",
+    "@sentry/nestjs": "^8.30.0",
+    "@sentry/profiling-node": "^8.30.0",
     "axios": "^1.7.7",
     "axios-retry": "^4.5.0",
     "csurf": "^1.11.0",
