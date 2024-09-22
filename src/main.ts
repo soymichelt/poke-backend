@@ -2,15 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import helmet from 'helmet';
 import { AppModule } from '@module/infrastructure/app.module';
-import * as Sentry from '@sentry/nestjs';
-import { nodeProfilingIntegration } from '@sentry/profiling-node';
-
-Sentry.init({
-  dsn: 'https://b64cb52b040308e4db072b5b615d7f6b@o298634.ingest.us.sentry.io/4507993051365376',
-  integrations: [nodeProfilingIntegration()],
-  tracesSampleRate: 1.0,
-  profilesSampleRate: 1.0,
-});
+import '@shared/infrastructure/tracking/sentry/sentryTracking';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

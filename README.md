@@ -10,6 +10,8 @@ Backend desarrollado con el framework [Nest](https://github.com/nestjs/nest), el
 $ npm install
 ```
 
+Luego de instalar las dependencias, asegúrate de configurar las variables de entorno requeridas para el proyecto. Si estás en tu entorno local en modo desarrollo asegúrate de crear el archivo `.env` y añadir ahí las variables de entorno. Sí estás en modo producción asegúrate que el sistema cuenta con las variables de entorno necesarias.
+
 ## Compilación y ejecución del proyecto
 
 ```bash

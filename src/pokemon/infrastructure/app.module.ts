@@ -15,6 +15,8 @@ import { HttpPokemonRepository } from '@module/infrastructure/persistence/http/h
 import { HealthCheckController } from '@module/infrastructure/controllers/healthCheck/healthCheck.controller';
 import { HttpPingIndicatorService } from '@module/infrastructure/services/pingIndicator/httpPingIndicatorService';
 import { HealthCheckUseCase } from '@module/application/useCases/healthCheck/healthCheckUseCase';
+import { SentryFilter } from '@shared/infrastructure/tracking/sentry/sentryFilter';
+import { APP_FILTER } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -29,7 +31,7 @@ import { HealthCheckUseCase } from '@module/application/useCases/healthCheck/hea
     HttpModule.register({ timeout: 5000, maxRedirects: 5 }),
     ConfigModule.forRoot({
       isGlobal: true,
-      ignoreEnvFile: true,
+      ignoreEnvFile: process.env.NODE_ENV === 'production',
       envFilePath: '.env',
     }),
   ],
@@ -53,6 +55,10 @@ import { HealthCheckUseCase } from '@module/application/useCases/healthCheck/hea
       useClass: HttpPingIndicatorService,
     },
     HealthCheckUseCase,
+    {
+      provide: APP_FILTER,
+      useClass: SentryFilter,
+    },
   ],
   exports: [HttpWithRetryService],
 })
